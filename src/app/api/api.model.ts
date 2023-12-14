@@ -1,175 +1,106 @@
 /* tslint:disable */
 /* eslint-disable */
-// Generated using typescript-generator version 3.2.1263 on 2023-08-02 16:50:48.
+// Generated using typescript-generator version 3.2.1263 on 2023-12-05 20:49:53.
 
 export interface RestApplication {
 
-    /**
-     * HTTP POST /allowance/add
-     * Java method: org.example.Controller.AllowanceCntr.addAllowance
-     */
-    addAllowance(allowanceModel: AllowanceModel): RestResponse<any>;
+  /**
+   * HTTP POST /salad/createBinaryDish
+   * Java method: com.example.chefkpo.Controller.DishController.createBinaryDish
+   */
+  createBinaryDish(dish: Dish): RestResponse<any>;
 
-    /**
-     * HTTP DELETE /allowance/delete/{id}
-     * Java method: org.example.Controller.AllowanceCntr.deleteAllowance
-     */
-    deleteAllowance(id: number): RestResponse<any>;
+  /**
+   * HTTP POST /salad/createDish
+   * Java method: com.example.chefkpo.Controller.DishController.createDish
+   */
+  createDish(dish: Dish): RestResponse<any>;
 
-    /**
-     * HTTP PUT /allowance/edit/{id}
-     * Java method: org.example.Controller.AllowanceCntr.editAllowance
-     */
-    editAllowance(id: number, allowanceModel: AllowanceModel): RestResponse<AllowanceModel>;
+  /**
+   * HTTP DELETE /salad/delete
+   * Java method: com.example.chefkpo.Controller.DishController.delete
+   */
+  delete(queryParams: { filename: string; }): RestResponse<any>;
 
-    /**
-     * HTTP GET /allowance/get/{id}
-     * Java method: org.example.Controller.AllowanceCntr.getAllowanceByEmployeeId
-     */
-    getAllowanceByEmployeeId(id: number): RestResponse<AllowanceModel[]>;
+  /**
+   * HTTP PUT /salad/editBinaryDish
+   * Java method: com.example.chefkpo.Controller.DishController.editBinaryDish
+   */
+  editBinaryDish(dish: Dish): RestResponse<any>;
 
-    /**
-     * HTTP POST /employee/add
-     * Java method: org.example.Controller.EmployeeCntr.addEmployee
-     */
-    addEmployee(employee: EmployeeModel): RestResponse<any>;
+  /**
+   * HTTP PUT /salad/editDish
+   * Java method: com.example.chefkpo.Controller.DishController.editDish
+   */
+  editDish(dish: Dish): RestResponse<any>;
 
-    /**
-     * HTTP DELETE /employee/delete/{id}
-     * Java method: org.example.Controller.EmployeeCntr.deleteEmployee
-     */
-    deleteEmployee(id: number): RestResponse<any>;
+  /**
+   * HTTP POST /salad/getAll
+   * Java method: com.example.chefkpo.Controller.DishController.getAll
+   */
+  getAll(dishSearchRequest: DishSearchRequest): RestResponse<DishResponse>;
 
-    /**
-     * HTTP PUT /employee/edit/{id}
-     * Java method: org.example.Controller.EmployeeCntr.editEmployee
-     */
-    editEmployee(id: number, employee: EmployeeModel): RestResponse<EmployeeModel>;
+  /**
+   * HTTP GET /salad/getBinaryDish
+   * Java method: com.example.chefkpo.Controller.DishController.getBinaryDish
+   */
+  getBinaryDish(queryParams: { filename: string; }): RestResponse<DishDto>;
 
-    /**
-     * HTTP POST /employee/search
-     * Java method: org.example.Controller.EmployeeCntr.searchEmployee
-     */
-    searchEmployee(employeeSearchModel: EmployeeSearchModel): RestResponse<EmployeeResponse>;
-
-    /**
-     * HTTP GET /position/all
-     * Java method: org.example.Controller.PositionCntr.searchPosition
-     */
-    searchPosition(): RestResponse<PositionModel[]>;
-
-    /**
-     * HTTP POST /premium/add
-     * Java method: org.example.Controller.PremiumCntr.addPremium
-     */
-    addPremium(premiumModel: PremiumModel): RestResponse<any>;
-
-    /**
-     * HTTP DELETE /premium/delete/{id}
-     * Java method: org.example.Controller.PremiumCntr.deletePremium
-     */
-    deletePremium(id: number): RestResponse<any>;
-
-    /**
-     * HTTP PUT /premium/edit/{id}
-     * Java method: org.example.Controller.PremiumCntr.editPremium
-     */
-    editPremium(id: number, premiumModel: PremiumModel): RestResponse<PremiumModel>;
-
-    /**
-     * HTTP GET /premium/get/{id}
-     * Java method: org.example.Controller.PremiumCntr.getPremiumByEmployeeId
-     */
-    getPremiumByEmployeeId(id: number): RestResponse<PremiumModel[]>;
-
-    /**
-     * HTTP POST /salary/add
-     * Java method: org.example.Controller.SalaryCntr.addSalary
-     */
-    addSalary(salaryModel: SalaryModel): RestResponse<any>;
-
-    /**
-     * HTTP DELETE /salary/delete/{id}
-     * Java method: org.example.Controller.SalaryCntr.deleteSalary
-     */
-    deleteSalary(id: number): RestResponse<any>;
-
-    /**
-     * HTTP PUT /salary/edit/{id}
-     * Java method: org.example.Controller.SalaryCntr.editSalary
-     */
-    editSalary(id: number, salaryModel: SalaryModel): RestResponse<SalaryModel>;
-
-    /**
-     * HTTP GET /salary/get/{id}
-     * Java method: org.example.Controller.SalaryCntr.getSalaryByEmployeeId
-     */
-    getSalaryByEmployeeId(id: number): RestResponse<SalaryModel[]>;
+  /**
+   * HTTP GET /salad/getDish
+   * Java method: com.example.chefkpo.Controller.DishController.getDish
+   */
+  getDish(queryParams: { filename: string; }): RestResponse<DishDto>;
 }
 
-export interface AllowanceModel {
-    id: number;
-    sum: number;
-    month: DateAsString;
-    numberOfOrder: number;
-    dateOfOrder: DateAsString;
-    employeeId: number;
+export interface Ingredient extends Serializable {
+  name: string;
+  weight: number;
+  calories: number;
 }
 
-export interface EmployeeModel {
-    id: number;
-    name: string;
-    surname: string;
-    secondSurname: string;
-    beginning: DateAsString;
-    dismissal: DateAsString;
-    phoneNumber: string;
-    email: string;
-    positionId: number;
+export interface IngredientDto {
+  name: string;
+  weight: number;
+  calories: number;
 }
 
-export interface EmployeeResponse {
-    employee: EmployeeModel[];
-    pageNo: number;
-    pageSize: number;
-    totalElements: number;
-    totalPages: number;
-    last: boolean;
+export interface Dish {
+  filename: string;
+  listIngredient: Ingredient[];
+  descriptions: string;
 }
 
-export interface EmployeeSearchModel {
-    surname: string;
-    working: boolean;
-    page: number;
-    elementPerPage: number;
-    direction: string;
-    key: string;
+export interface DishDto {
+  dish: Ingredient[];
 }
 
-export interface PositionModel {
-    id: number;
-    name: string;
-    beginning: DateAsString;
+export interface DishEntity {
+  id: number;
+  filename: string;
+  filenameWithoutExt: string;
+  descriptions : string;
 }
 
-export interface PremiumModel {
-    id: number;
-    sum: number;
-    month: DateAsString;
-    numberOfOrder: number;
-    dateOfOrder: DateAsString;
-    employeeId: number;
+export interface DishResponse {
+  dishes: DishEntity[];
+  pageNo: number;
+  pageSize: number;
+  totalElements: number;
+  totalPages: number;
+  last: boolean;
 }
 
-export interface SalaryModel {
-    id: number;
-    sum: number;
-    month: DateAsString;
-    numberOfOrder: number;
-    dateOfOrder: DateAsString;
-    employeeId: number;
+export interface DishSearchRequest {
+  page: number;
+  elementPerPage: number;
+  direction: string;
+  key: string;
 }
 
-export type DateAsString = string;
+export interface Serializable {
+}
 
 export type RestResponse<R> = Promise<R>;
+
+

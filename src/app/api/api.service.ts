@@ -1,93 +1,56 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AllowanceModel, EmployeeModel, EmployeeResponse, EmployeeSearchModel, PositionModel, PremiumModel, RestResponse, SalaryModel } from './api.model';
+import { Dish,DishSearchRequest, DishResponse,DishDto, RestResponse } from './api.model';
 import { environment } from '../environments/environment';
+import { HttpHeaders } from '@angular/common/http';
+import { Token } from '@angular/compiler';
+
 
 
 @Injectable({providedIn: 'root'})
 export class ApiService {
   private apiServerUrl = environment.SERVER_URL;
-
   constructor(private http: HttpClient){}
 
-  public addAllowance(allowanceModel: AllowanceModel): Observable<AllowanceModel> {
-    return this.http.post<AllowanceModel>(`${this.apiServerUrl}/allowance/add`, allowanceModel);
+  public createBinaryDish(dish: Dish): Observable<Dish> {
+    return this.http.post<Dish>(`${this.apiServerUrl}/dish/createBinaryDish`, dish);
   }
 
-  public deleteAllowance(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/allowance/delete/${id}`);
+  public createDish(dish: Dish): Observable<Dish> {
+    return this.http.post<Dish>(`${this.apiServerUrl}/dish/createDish`, dish);
   }
 
-    
-    public editAllowance(allowanceModel: AllowanceModel): Observable<AllowanceModel> {
-        return this.http.put<AllowanceModel>(`${this.apiServerUrl}/allowance/edit/${allowanceModel.id}`, allowanceModel);
-      }
-   
-    public getAllowanceByEmployeeId(id: number): Observable<AllowanceModel[]> {
-        return this.http.get<AllowanceModel[]>(`${this.apiServerUrl}/allowance/get/${id}`);
-      }
-  
-    public addEmployee(employee: EmployeeModel):  Observable<EmployeeModel> {
-        return this.http.post<EmployeeModel>(`${this.apiServerUrl}/employee/add`, employee);
-      }
+  deleteDish(filename: string): Observable<any> {
+    const queryParams = { filename: filename };
+    return this.http.delete<any>(`${this.apiServerUrl}/dish/delete`, { params: queryParams });
+  }
 
-    
-      public deleteEmployee(id: number):Observable<void> {
-        return this.http.delete<void>(`${this.apiServerUrl}/employee/delete/${id}`);
-      }
-    
+  editBinaryDish(dish: Dish): Observable<any> {
+    return this.http.put<any>(`${this.apiServerUrl}/dish/editBinaryDish`, dish);
+  }
 
-    
-      public editEmployee( employee: EmployeeModel):  Observable<EmployeeModel> {
-        return this.http.put<EmployeeModel>(`${this.apiServerUrl}/employee/edit/${employee.id}`, employee);
-      }
+  editDish(dish: Dish): Observable<any> {
+    const url = `${this.apiServerUrl}/dish/editDish`;
+    return this.http.put<any>(url, dish);
+  }
 
-    
-    public searchEmployee(employeeSearchModel: EmployeeSearchModel): Observable<EmployeeResponse> {
-        return this.http.post<EmployeeResponse>(`${this.apiServerUrl}/employee/search`,employeeSearchModel);
-      }
-   
-     public searchPosition(): Observable<PositionModel[]> {
-        return this.http.get<PositionModel[]>(`${this.apiServerUrl}/position/all`);
-      }
 
-    
-     public addPremium(premiumModel: PremiumModel): Observable<PremiumModel> {
-        return this.http.post<PremiumModel>(`${this.apiServerUrl}/premium/add`, premiumModel);
-      }
+  getAllDishes(dishSearchRequest: DishSearchRequest): Observable<DishResponse> {
+    return this.http.post<DishResponse>(`${this.apiServerUrl}/dish/getAll`,dishSearchRequest);
+  }
 
-    
-    deletePremium(id: number):Observable<void> {
-        return this.http.delete<void>(`${this.apiServerUrl}/premium/delete/${id}`);
-      }
 
-   
-    public editPremium(premiumModel: PremiumModel): Observable<PremiumModel> {
-        return this.http.put<PremiumModel>(`${this.apiServerUrl}/premium/edit/${premiumModel.id}`, premiumModel);
-      }
+  getBinaryDish(filename: string): Observable<DishDto> {
+    const queryParams = { filename: filename };
+    const url = `${this.apiServerUrl}/dish/getBinaryDish`;
+    return this.http.get<DishDto>(url, { params: queryParams });
+  }
 
-    
-    public getPremiumByEmployeeId(id: number): Observable<PremiumModel[]> {
-        return this.http.get<PremiumModel[]>(`${this.apiServerUrl}/premium/get/${id}`);
-      }
 
-   
-    addSalary(salaryModel: SalaryModel): Observable<SalaryModel> {
-        return this.http.post<SalaryModel>(`${this.apiServerUrl}/salary/add`, salaryModel);
-      }
-   
-    deleteSalary(id: number): Observable<void> {
-        return this.http.delete<void>(`${this.apiServerUrl}/salary/delete/${id}`);
-      }
-    
-    public editSalary(salaryModel: SalaryModel): Observable<SalaryModel> {
-        return this.http.put<SalaryModel>(`${this.apiServerUrl}/salary/edit/${salaryModel.id}`, salaryModel);
-      }
-    
-
-    
-    public getSalaryByEmployeeId(id: number):  Observable<SalaryModel[]> {
-        return this.http.get<SalaryModel[]>(`${this.apiServerUrl}/salary/get/${id}`);
-      }
+  getDish(filename: string): Observable<DishDto> {
+    const queryParams = { filename: filename };
+    const url = `${this.apiServerUrl}/dish/getDish`;
+    return this.http.get<DishDto>(url, { params: queryParams });
+  }
 }

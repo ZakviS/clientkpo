@@ -1,0 +1,64 @@
+<!-- dish-form.component.html -->
+<form [formGroup]="dishForm">
+  <div class="form-group">
+    <label for="filename">Имя файла:</label>
+    <input type="text" formControlName="filename" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label for="descriptions">Описание:</label>
+    <input type="text" formControlName="descriptions" class="form-control" required>
+  </div>
+  <div formArrayName="ingredients">
+    <div *ngFor="let ingredient of ingredients.controls; let i = index" class="form-group">
+      <label for="ingredientName">Ингредиент {{ i + 1 }}:</label>
+      <div class="form-row">
+        <div class="col">
+          <input
+            type="text"
+            [formControl]="getIngredientControl(i, 'name')"
+            class="form-control"
+            placeholder="Название"
+            required
+          />
+        </div>
+        <div class="col">
+          <input
+            type="number"
+            [formControl]="getIngredientControl(i, 'weight')"
+            class="form-control"
+            placeholder="Вес"
+            required
+          />
+        </div>
+        <div class="col">
+          <input
+            type="number"
+            [formControl]="getIngredientControl(i, 'calories')"
+            class="form-control"
+            placeholder="calories"
+            required
+          />
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-danger" (click)="removeIngredient(i)">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <button type="button" class="btn btn-success" (click)="addIngredient()">Добавить ингредиент</button>
+
+  <div class="form-group">
+    <label for="dishType">Тип блюда:</label>
+    <select formControlName="saladType" class="form-control" required>
+      <option value="txt">Обычное блюдо</option>
+      <option value="dat">Бинарное блюдо</option>
+    </select>
+  </div>
+
+  <button type="button" class="btn btn-primary" (click)="submitForm()">Создать блюдо</button>
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Отмена</button>
+</form>
