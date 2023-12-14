@@ -3,40 +3,43 @@
   <h2>Edit Salad</h2>
   <form [formGroup]="editForm">
     <div class="form-group">
-      <label for="filename">Filename: {{filename}}</label>
+      <label for="filename">{{ 'TEXT.DISH.NAME' | translate }}: {{filename}}</label>
     </div>
     <div class="form-group">
-      <label for="descriptions">Описание:</label>
+      <label for="descriptions">{{ 'TEXT.DISH.DESCRIPTION' | translate }}:</label>
       <input type="text" formControlName="descriptions" class="form-control" required>
     </div>
 
     <div formArrayName="ingredients">
       <div *ngFor="let ingredient of ingredients.controls; let i = index" class="form-group">
-        <label for="ingredientName">Ingredient {{ i + 1 }}:</label>
+        <label for="ingredientName">{{ 'TEXT.DISH.INGREDIENT' | translate }} {{ i + 1 }}:</label>
         <div class="form-row">
           <div class="col">
+            <label>{{ 'TEXT.DISH.INGNAME' | translate }}</label>
             <input type="text" [formControl]="getIngredientControl(i, 'name')" class="form-control" placeholder="Name" required>
           </div>
           <div class="col">
+            <label>{{ 'TEXT.DISH.WEIGHT' | translate }}</label>
             <input type="number" [formControl]="getIngredientControl(i, 'weight')" class="form-control" placeholder="Weight" required>
           </div>
           <div class="col">
+            <label>{{ 'TEXT.DISH.CAL' | translate }}</label>
             <input type="number" [formControl]="getIngredientControl(i, 'calories')" class="form-control" placeholder="Weight" required>
           </div>
           <div class="col">
-            <button type="button" class="btn btn-danger" (click)="removeIngredient(i)">Remove</button>
+            <button type="button" class="btn btn-danger" (click)="removeIngredient(i)">{{ 'BUTTON.DISH.REMOVE' | translate }}</button>
           </div>
         </div>
       </div>
     </div>
 
     <div class="form-group">
-      <button type="button" class="btn btn-success" (click)="addIngredient()">Add Ingredient</button>
+      <button type="button" class="btn btn-success" (click)="addIngredient()">{{ 'BUTTON.DISH.ADDING' | translate }}</button>
     </div>
 
     <div class="form-group">
-      <button type="button" class="btn btn-success" (click)="save()">Save</button>
-      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+      <button type="button" class="btn btn-success" (click)="save()">{{ 'BUTTON.DISH.CREATE' | translate }}</button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">{{ 'BUTTON.DISH.CANCEL' | translate }}</button>
     </div>
   </form>
 </div>

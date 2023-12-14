@@ -4,6 +4,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {MatAccordion} from '@angular/material/expansion';
 import {Dish, DishEntity, DishResponse, DishSearchRequest} from '../api/api.model';
 import {ApiService} from '../api/api.service';
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Component({
@@ -36,9 +37,8 @@ export class DishComponent implements OnInit {
 
   public isAddFormOpen = false;
 
-  constructor(private apiService: ApiService
+  constructor(private apiService: ApiService,public translate: TranslateService
   ) {
-
   }
 
   ngOnInit() {
@@ -195,7 +195,6 @@ export class DishComponent implements OnInit {
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
     if (mode === 'delete') {
-      console.log("delete")
       this.deleteDish.filename = salad.filename;
       button.setAttribute('data-target', '#deleteEmployeeModal');
     }

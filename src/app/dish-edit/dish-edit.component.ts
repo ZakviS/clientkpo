@@ -2,6 +2,7 @@
 import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Dish} from '../api/api.model';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-salad-edit',
@@ -18,7 +19,7 @@ export class DishEditComponent implements OnChanges {
   filename: string;
   descriptions : string
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,public translate: TranslateService) {
     this.editForm = this.formBuilder.group({
       filename: ['', Validators.required],
       ingredients: this.formBuilder.array([]),

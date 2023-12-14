@@ -1,0 +1,39 @@
+{
+  "TEXT": {
+    "HOME": {
+      "ITEMS": "Items per page",
+      "NEXT": "Next",
+      "PREV": "Prev",
+      "DELETE": "Delete dish",
+      "CONFIRM": "Are you sure you want to delete dish:"
+    },
+    "DISH": {
+      "NAME": "File name",
+      "DESCRIPTION": "Description",
+      "INGREDIENT": "Ingredient",
+      "TYPE": "Dish type",
+      "TXT": "Common dish",
+      "DAT": "Binary dish",
+      "INGNAME": "Name",
+      "WEIGHT": "Weight",
+      "CAL": "Calories"
+    }
+  },
+  "BUTTON": {
+    "LANG": {
+      "RU": "Russian",
+      "EN": "English"
+    },
+    "DISH": {
+      "ADDDISH": "Add dish",
+      "ADDING": "Add ingredient",
+      "CREATE": "Save dish",
+      "CANCEL": "Cancel",
+      "REMOVE": "Remove"
+    },
+    "DELETE": {
+      "YES": "Yes",
+      "NO": "No"
+    }
+  }
+}

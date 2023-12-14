@@ -2,6 +2,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Dish, DishDto} from "../api/api.model";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-salad-form',
@@ -14,7 +15,7 @@ export class DishFormComponent {
 
   dishForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,public translate: TranslateService) {
     this.dishForm = this.formBuilder.group({
       filename: ['', Validators.required],
       ingredients: this.formBuilder.array([]),
